@@ -20,7 +20,7 @@ export const appRoutes: Routes = [
   // Path  -  Action that will happen
   { path: '', component: HomeComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'users/:id', component: UserComponent },
+  { path: 'users/:id/:name', component: UserComponent },
   { path: 'servers', component: ServersComponent }
 ];
 
