@@ -8,6 +8,7 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deativate-guard.service';
 
 export const appRoutes: Routes = [
     // The path is what will come after the domain
@@ -23,7 +24,7 @@ export const appRoutes: Routes = [
       // canActivate: [AuthGuard],
       component: ServersComponent,
       children: [
-        { path: ':id/edit', component: EditServerComponent },
+        { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] },
         { path: ':id', component: ServerComponent },
       ]
     },
