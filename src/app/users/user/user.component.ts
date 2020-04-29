@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
 
     this.route.params.subscribe(
       (params: Params) => {
-        //This will change our user object, whenever the parameter change
+        // This will change our user object, whenever the parameter change
         this.user.id = params.id;
         this.user.name = params.name;
       }
