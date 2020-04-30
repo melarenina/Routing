@@ -50,6 +50,8 @@ export const appRoutes: Routes = [
 @NgModule({
     imports: [
         // ForRoot allows us to register some routes to our main application
+        // The javaScript object is to configure the routs
+        // RouterModule.forRoot(appRoutes, {useHash: true})
         RouterModule.forRoot(appRoutes)
     ],
     exports: [RouterModule]
