@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServersService } from 'src/app/Services/servers.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,16 +17,24 @@ export class ServerComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.params.id; // Every data coming from the url comes as a string. The plus makes it turn into a number
 
-    this.paramsSubscription = this.route.params.subscribe(
-      (params: Params) => {
-        // This will change our user object, whenever the parameter change
-        this.server = this.serversService.getServer(+params.id);
+    this.route.data.subscribe(
+      (data: Data) => {
+                      // This .server name has to match the variable name on the app-routing data
+        this.server = data.server;
       }
     );
-      // Passando os dados daquele servidor, vindo do service para o nosso objeto local de server
-    this.server = this.serversService.getServer(id);
+
+    // const id = +this.route.snapshot.params.id; // Every data coming from the url comes as a string. The plus makes it turn into a number
+
+    // this.paramsSubscription = this.route.params.subscribe(
+    //   (params: Params) => {
+    //     // This will change our user object, whenever the parameter change
+    //     this.server = this.serversService.getServer(+params.id);
+    //   }
+    // );
+    //   // Passando os dados daquele servidor, vindo do service para o nosso objeto local de server
+    // this.server = this.serversService.getServer(id);
   }
 
   onEdit(){                                               // To preserve the query params when we move to the edit route
